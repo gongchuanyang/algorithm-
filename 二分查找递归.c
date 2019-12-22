@@ -2,7 +2,6 @@
 #include<stdio.h>
 int bin_search(int a[],int low,int high,int x)
 {
-low=0,high=8;
 int mid;
 if(low>high)
 return -1;
@@ -25,11 +24,12 @@ bin_search(a,low,mid-1,x);
 }
 int main()
 {
-int a[9]={2,4,6,7,8,9,10,11,13};
+int a[]={2,4,6,7,8,9,10,11,13};
+int len =sizeof(a)/sizeof(int);
 int x;
-while(scanf("%d",&x)!=EOF)
+while(scanf("%d",&x)!=EOF) //连续读入数据
 {
-int addr=bin_search(a,0,9,x);
+int addr=bin_search(a,0,len,x);
 if(addr!=-1)
 {
 printf("%d is located %d",x,addr);
