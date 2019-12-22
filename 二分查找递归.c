@@ -3,7 +3,7 @@
 int bin_search(int a[],int low,int high,int x)
 {
 int mid;
-if(low>high)
+if(low>high) //递归结束条件
 return -1;
 else
 {
