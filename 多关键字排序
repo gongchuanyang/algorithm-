@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <algorithm>
+using namespace std;
+struct stu
+{
+string name;
+int age;
+int score;
+};
+ bool  cmp(stu a,stu b)
+{
+if(a.score!=b.score)
+return a.score > b.score;
+else
+{
+if(a.name!=b.name)
+return a.name < b.name;
+else
+return a.age < b.age;
+} 
+}
+int main()
+{
+vector<stu> s; 
+stu su;
+cout<<"请输入 4 个学生信息：姓名，年龄，成绩，以00 00 00结束"<<endl;
+ofstream out("D:\f1.txt");
+while(cin>>su.name>>su.age>>su.score)
+{
+if(su.name=="00")
+break;
+out<<su.name<<" "<<su.age<<" " <<su.score<<endl;
+}
+ifstream in("D:\f1.txt");
+while(!in.eof())
+{
+in>>su.name>>su.age>>su.score;
+if(in.fail())
+break;
+s.push_back(su);
+}
+sort(s.begin(),s.end(),cmp);
+vector<stu>::iterator i;
+
+for(i=s.begin();i!=s.end();i++)
+{
+cout<<(*i).name<<" "<<(*i).age<<" "<<(*i).score<<endl;
+}
+i=s.begin()+1;
+cout<<(*i).name<<" "<<(*i).age<<" "<<(*i).score<<endl;
+return 0;
+}
